@@ -1,0 +1,434 @@
+<html>
+    <head>
+        <style>
+             body {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        background-color: black;
+        font-family: sans-serif;
+      }
+  
+      .clientinput {
+        position: relative;
+        top: 85%;
+      }
+  
+      button,
+      input[type="file"] {
+        height: 40px;
+        width: 60px;
+        border: none;
+        font-weight: bold;
+        color: rgb(2, 90, 2);
+        background-color: white;
+        border-radius: 20px;
+        border: 2px solid rgb(6, 94, 0);
+        transition: all 300ms;
+      }
+  
+      button#record,
+      button#stopRecord {
+        width: 120px;
+        height: 60px;
+        margin-left: 20px;
+        margin-right: 20px;
+        border-radius: 20px;
+        color: white;
+        background: linear-gradient(to right, #f7b733, #fc4a1a);
+      }
+  
+      button:hover {
+        background-color: rgb(2, 90, 2);
+        color: white;
+      }
+      button#bgcheck {
+        width: 120px;
+        color: white;
+        background-color: #0b4b0b;
+        border-radius: 20px;
+      }
+      input[type="file"] {
+        width: 400px;
+        height: 100px;
+        padding: 50px;
+        padding-bottom: 0;
+        padding-left: 100px;
+        
+        background-color: #0b4b0b;
+        color: white;
+      }
+  
+      #clientinput {
+        min-width: 70%;
+        height: 40px;
+        border: none;
+        border: 2px solid rgb(7, 103, 0);
+        border-radius: 5px;
+        font-size: large;
+        font-weight: bold;
+        background-color: white;
+        color: black;
+        padding: 10px;
+      }
+  
+      .resume {
+        max-width: 400px; /* set maximum width */
+        margin: 0 auto; /* center horizontally */
+      }
+
+      #resume {
+        width: 60%; /* occupy full width of parent */
+        height: 60px; /* set desired height */
+        padding: 10px; /* add some padding for visual appeal */
+        box-sizing: border-box; /* include padding in element's total height */
+      }
+  
+      div.blocks {
+        min-width: 300px;
+        width: 700px;
+        text-align: center;
+        background-color: black;
+        border: 1px solid rgb(219, 219, 219);
+        border-radius: 10px;
+        box-shadow: 0px 0px 20px 0px rgba(0,0,0,0.2);
+        margin: 20px;
+        padding: 20px;
+      }
+  
+      .right > h1 {
+        color: white;
+        font-size: xx-large;
+        font-weight: 800;
+        margin-top: 60px;
+      }
+  
+      .right h2 {
+        color: white;
+        font-size: large;
+        font-weight: 800;
+        margin-top: 60px;
+      }
+  
+      .job_description,
+      .messages {
+        height: 50%;
+        max-height: 50%;
+        max-width: 100%;
+        overflow-y: scroll;
+        padding: 10px;
+        box-sizing: border-box;
+      }
+  
+      /* New Styles */
+  
+      /* Styles for job description text */
+      .job_description {
+        padding: 20px;
+        text-align: justify;
+        line-height: 1.5;
+        font-size: 18px;
+        color: white;
+      }
+  
+      .job_description h1,
+      .job_description h2,
+      .job_description h3 {
+        background-color: #0b4b0b;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+      }
+  
+      .job_description p {
+        margin: 10px 0;
+        color:white;
+      }
+  
+      .job_description strong {
+        font-weight: bold;
+      }
+
+    .job_description em {
+        font-style: italic;
+    }
+
+    /* Highlight lines with ":" */
+    .job_description span {
+        font-weight: bold;
+    }
+    #bgcheckpopup {
+      box-sizing: border-box;
+      position: absolute;
+      width: 30vw;
+      height: 60vh;
+      background-color: white;
+      color: #0b4b0b;
+      font-weight: bold;
+      font-size: x-large;
+      border: 2px solid #0b4b0b;
+      border-radius: 5px;
+      text-align: center;
+      padding-top: 20px;
+      top: 10%;
+    }
+    #complete {
+      position: absolute;
+      top: 80%;
+      left: 40%;
+      width: 100px;
+    }
+    #offer {
+      box-sizing: border-box;
+      position: absolute;
+      width: 40vw;
+      height: 60vh;
+      background-color: white;
+      color: #0b4b0b;
+      font-weight: bold;
+      font-size: x-large;
+      border: 2px solid #0b4b0b;
+      border-radius: 5px;
+      text-align: center;
+      padding-top: 20px;
+      top: 10%;
+    }
+    #offer .main {
+      height: 70%;
+      overflow-y: scroll;
+    }
+    #accept {
+      position: absolute;
+      top: 80%;
+      left: 30%;
+      width: 80px;
+    }
+    #reject {
+      position: absolute;
+      top: 80%;
+      left: 50%;
+      width: 80px;
+    }
+        </style>
+    </head>
+    <body>
+        
+        <div class="blocks left">
+          <div class="clientinput">
+              <input type="text" id="clientinput">
+              <button id="clientsend"> Send </button>
+          </div>
+          <p>
+              <button type="button" id="record">Record</button>
+              <button type="button" id="stopRecord" disabled>Stop</button>
+          </p>
+          <p class="recordedAudio">
+              <audio id="recordedAudio"></audio>        
+          </p>
+
+          <button id="bgcheck" style="display: none;"> Background Check </button>            
+              
+          <div class="messages">
+            
+          </div>
+        </div>
+        <div class="blocks right">
+            <h1>Job Description</h1>
+            <p class="job_description"></p>
+            <div class="resume">
+                <h2>Upload Resume</h2>
+                <input type="file" id="resume" disabled>
+            </div>
+        </div>
+
+        <div id="bgcheckpopup" style="display: none;">
+          Background Check
+          <button id="complete">Complete</Command></button>
+        </div>
+
+        <div id="offer" style="display: none;">
+          <div class="main">
+
+          </div>
+          <button id="accept">Accept</button>
+          <button id="reject">Reject</button>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script type="text/javascript" charset="utf-8">
+            
+            var socket = io();
+            socket.on('connect', function() {
+                socket.emit('load', {data: '...Client is connected!...'});
+            });
+
+            socket.on('disconnect', function() {
+                socket.emit('load', {data: '...Client is disconnected!...'});
+            });
+
+            socket.on('client_receive', function(message) {
+                hr_message = message.data
+                document.querySelector('.messages').innerHTML += `<span style="color:white">HR Manager >>></span> <span style="color : red"> ${hr_message} </span> <br>`
+            })
+
+            socket.on('hr_audio', function(data) {
+                let blob = new Blob([data], {type: 'audio/wav'})
+                let audio = document.createElement('audio')
+                audio.src = URL.createObjectURL(blob)
+                audio.controls = true
+                document.querySelector('.messages').appendChild(audio)
+                document.querySelector('.messages').innerHTML += `<br>`
+            })
+
+            socket.on('jd_sent', function(data) {
+                document.querySelector('#resume').removeAttribute('disabled');
+                const jobDescription = data.text;
+                const lines = jobDescription.split('\n');
+                const formattedLines = lines.map(line => {
+                    const words = line.trim().split(/\s+/);
+                    if (words.length < 5) {
+                        return '<strong>' + line + '</strong>';
+                    } else {
+                        return line;
+                    }
+                }).join('<br>');
+
+                document.querySelector('.job_description').innerHTML = `<b>Job Type:</b> ${data.jobtype}` 
+                document.querySelector('.job_description').innerHTML += formattedLines;
+            });
+
+            // replace these with database
+            let resumematchsent = ""
+            let salarysent = ""
+            let capabilitysent = ""
+
+            socket.on('enable_backgroundcheck', (data) => {
+              resumematchsent = data.matchperc
+              salarysent = data.salary
+              capabilitysent = data.capability
+              document.querySelector('#bgcheck').removeAttribute('style')
+            })
+
+            socket.on('offerreceived', (data) => {
+              document.querySelector('#offer').removeAttribute('style')
+              heading = document.createElement('h3')
+              heading.innerHTML = `Congratulations! You received an offer of ${data.salary}.`
+              document.querySelector('#offer .main').appendChild(heading) 
+            })
+
+            document.querySelector('#clientsend').addEventListener('click', function() {
+                const client_message = document.querySelector('#clientinput')
+                document.querySelector('.messages').innerHTML += `<span style="color:white">You >>></span>    <span style="color : blue"> ${client_message.value} </span> <br>` 
+                socket.emit('client_message', {data: client_message.value})
+                client_message.value = " "
+            })
+
+            // Define the configuration for the Web Audio API
+            navigator.mediaDevices.getUserMedia({audio:true})
+            .then(stream => {handlerFunction(stream)})
+
+            function handlerFunction(stream) 
+            {
+                rec = new MediaRecorder(stream);
+                rec.ondataavailable = e => {
+                    audioChunks.push(e.data);
+                    if (rec.state == "inactive"){
+                    let blob = new Blob(audioChunks,{type:'audio/mp3'});
+                    recordedAudio.src = URL.createObjectURL(blob);
+                    recordedAudio.controls=true;
+                    recordedAudio.autoplay=true;
+                    sendData(blob)
+                    }
+                }
+                /*rec = new MediaRecorder(stream, {
+                    mimeType: "audio/wav"
+                });
+
+                rec.ondataavailable = e => {
+                    audioChunks.push(e.data);
+                    if (rec.state == "inactive"){
+                        let blob = new Blob(audioChunks,{type:'audio/wav'});
+                        recordedAudio.src = URL.createObjectURL(blob);
+                        recordedAudio.controls=true;
+                        recordedAudio.autoplay=true;
+                        sendData(blob)
+                    }
+                }*/
+            }
+            
+            function sendData(data) 
+            {
+                let reader = new FileReader()
+                reader.readAsArrayBuffer(data)
+
+                reader.onload = function (event) 
+                {
+                    console.log(event.target.result)
+                    socket.emit('audio', event.target.result)
+                }
+            }
+            
+            record.onclick = e => 
+            {
+                record.disabled = true;
+                record.style.backgroundColor = "blue"
+                stopRecord.disabled=false;
+                audioChunks = [];
+                rec.start();
+            }
+            stopRecord.onclick = e => 
+            {
+                record.disabled = false;
+                stop.disabled=true;
+                record.style.backgroundColor = "red"
+                rec.stop();
+            }
+            let fileInput = document.querySelector('#resume')
+            fileInput.addEventListener('change', () => {
+                console.log('resume uploaded')
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // When the file has been loaded, send its contents to the server
+                    const pdfData = event.target.result;
+                    socket.emit('resume_upload', { 'data': pdfData });
+                }
+                reader.readAsArrayBuffer(file);
+            })
+
+            document.querySelector('#bgcheck').addEventListener('click', () => {
+                document.querySelector('#bgcheckpopup').removeAttribute('style')
+            })
+
+            document.querySelector('#complete').addEventListener('click', () => {
+                document.querySelector('#bgcheckpopup').setAttribute('style', 'display:none')
+                // emit background check results as well in production
+                socket.emit('bgcheckcomplete', {'salary': salarysent, 'capability': capabilitysent, 'matchperc': resumematchsent})
+            })
+
+            document.querySelector('button#accept').addEventListener('click', () => {
+              console.log(1)
+                document.querySelector('div#offer').setAttribute('style', 'display:none')
+                socket.emit('client_message', {data: 'Candidate accepted the job at the offered salary!'})
+            })
+
+            document.querySelector('#reject').addEventListener('click', () => {
+                document.querySelector('#offer').setAttribute('style', 'display:none')
+                socket.emit('client_message', {data: 'Candidate rejected the offer!'})
+            })
+
+            socket.on('altoffer', (data) => {
+              document.querySelector('#offer').removeAttribute('style')
+              heading = document.createElement('h5')
+              heading.innerHTML = `Congratulations! You received an offer for the job: `
+              heading.innerHTML += '<br>'
+              heading.innerHTML += data.matchperc
+              heading.innerHTML += '<br>'
+              heading.innerHTML += data.text
+              document.querySelector('#offer .main').appendChild(heading)              
+            })
+
+        </script>
+
+    </body>
+</html>

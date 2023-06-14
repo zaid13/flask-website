@@ -1,0 +1,491 @@
+<html>
+    <head>
+    </head>
+    <style>
+         body {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            background-color: black;
+            font-family: sans-serif;
+        }
+        .hrinput {
+            position: relative;
+            top: 85%;
+            display: flex;
+            justify-content: space-around;
+        }
+        .details {
+            box-sizing: border-box;
+            padding: 10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        .salary {
+            display: flex;
+            color:white;
+        }
+        #jobs, #alternatejds {
+            border: 2px solid rgb(6, 94, 0);
+            color: rgb(2, 90, 2);
+            font-weight: bold;
+            border-radius: 5px;
+        }
+        button, input[type="file"] {
+            height: 40px;
+            width: 60px;
+            border: none;
+            font-weight: bold;
+            color: white;
+            background-color: #0b4b0b;
+            border-radius: 20px;
+            border: 2px solid rgb(6, 94, 0);
+            transition: all 300ms;
+        }
+        button#endinterview {
+            width: 120px;
+            color: white;
+            background-color: #0b4b0b;
+            border-radius: 20px;
+        }
+        button#hire, button#nothire {
+            width: 80px;
+        }
+        button#salary {
+            width: 80px;
+            color: wheat;
+            background-color: #0b4b0b;
+            border-radius: 20px;
+        }
+        button:hover {
+            background-color: rgb(2, 90, 2);
+            color: white;
+        }
+        input[type="file"] {
+            width: 400px;
+            height: 100px;
+            padding-right: 100px;
+            padding: 50px;
+            padding-bottom: 0;
+            padding-left: 100px;
+        }
+        #hrinput {
+            min-width: 60%;
+            height: 40px;
+            border: none;
+            color: black;
+            border: 2px solid rgb(7, 103, 0);
+            border-radius: 5px;
+            font-size: large;
+            font-weight: bold;
+        }
+        .job_description {
+            max-width: 400px; /* set maximum width */
+            margin: 0 auto; /* center horizontally */
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        #job_description {
+            width: 60%; /* occupy full width of parent */
+            height: 60px; /* set desired height */
+            padding: 10px; /* add some padding for visual appeal */
+            box-sizing: border-box; /* include padding in element's total height */
+        }
+
+        div.blocks {
+            min-width: 300px;
+            width: 700px;
+            text-align: center;
+            background-color: rgb(0, 0, 0);
+            border: 1px solid rgb(219, 219, 219);
+            border-radius: 10px;
+        }
+        .right>h1 {
+            color: white;
+            font-size: xx-large;
+            font-weight: 800;
+            margin-top: 60px;
+        }
+        .right h2 {
+            color: white;
+            font-size: large;
+            font-weight: 800;
+            margin-top: 60px;
+        }
+        .resume {
+            margin-top: 30px;
+            text-align: left;
+            line-height: 1.6;
+            color: white;
+        }
+        .resume h3 {
+            color: #0b4b0b;
+            font-size: large;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .resume p {
+            margin-bottom: 10px;
+            color: white;
+        }
+        .resume ul {
+            margin-left: 20px;
+            color: white;
+            margin-bottom: 20px;
+        }
+        .resume li {
+            margin-bottom: 5px;
+            color: wheat;
+        }
+        .resume textarea {
+            width: 100%;
+            height: 350px;
+            resize: none;
+            border: 2px solid rgb(7, 103, 0);
+            border-radius: 5px;
+            font-size: medium;
+            color: white;
+            font-weight: normal;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .resume,
+        .main {
+            height: 50%;
+            max-height: 50%;
+            max-width: 100%;
+            overflow-y: scroll;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        #questions, #job_description, #secondary_description {
+            display: none;
+        }
+        label[for="questions"], label[for="job_description"], label[for="secondary_description"] {
+            box-sizing: border-box;
+            color: white;
+            background-color: #0b4b0b;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: small;
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            max-height: 50px;
+        }
+        #bgcheckpopup, #alternateoffers {
+            box-sizing: border-box;
+            position: absolute;
+            width: 30vw;
+            height: 60vh;
+            background-color: white;
+            color: #0b4b0b;
+            font-weight: bold;
+            font-size: x-large;
+            border: 2px solid #0b4b0b;
+            border-radius: 5px;
+            text-align: center;
+            padding-top: 20px;
+            top: 10%;
+        }
+        #alternateoffers {
+            width: 60vw;
+            height: 80vh;
+        }
+        #alternateoffers .main {
+            height: 80%;
+            max-height: 80%;
+            margin-bottom: 30px;
+        }
+        #send, #notsend {
+            width: 90px;
+        }
+        #done {
+            position: absolute;
+            top: 80%;
+            left: 40%;
+            width: 100px;
+        }
+        button.active {
+            background: linear-gradient(to right, #f7b733, #fc4a1a);
+        }
+    </style>
+    <body>
+
+        <div class="blocks left">
+            <div class="hrinput">    
+                <input type="text" id="hrinput">
+                <button id="hrsend"> Send </button>
+                <label for="questions">Upload questions</label>
+                <input type="file" id="questions">
+            </div>
+            <div class="details">
+                <span class="salary">
+                    <select name="Job" id="jobs">
+                        <option value="Doctor">Doctor</option>
+                        <option value="Dentist">Dentist</option>
+                        <option value="Pharmacist">Pharmacist</option>
+                        <option value="Software developer">Software developer</option>
+                        <option value="Registered nurse">Registered nurse</option>
+                        <option value="Accountant">Accountant</option>
+                        <option value="Teacher (K-12)">Teacher (K-12)</option>
+                        <option value="Mechanical engineer">Mechanical engineer</option>
+                        <option value="Marketing manager">Marketing manager</option>
+                        <option value="Machine learning engineer">Machine learning engineer</option>
+                        <option value="ML Engineer">ML Engineer</option>
+                        <option value="Artificial intelligence engineer">Artificial intelligence engineer</option>
+                        <option value="AI engineer">AI engineer</option>
+                    </select>
+
+                    <span class="salary" style="border-radius: 10px;">
+                        <select name="jobtype" id="jobtype">
+                            <option value="On Site">On Site</option>
+                            <option value="Remote">Remote</option>
+                            <option value="Hybrid">Hybrid</option>
+                        </select>
+                    </span>
+                    &nbsp
+                    &nbsp
+                    &nbsp
+                    <button id="salary"> Get Salary </button>
+                    <span style="color: #0b4b0b; font-weight: bold; text-align: center; padding: 10px;"></span>
+                </span>
+                
+                <button id="endinterview"> End Interview </button>
+                <button id="hire" disabled style="background-color: gray; border: gray;"> Hire </button>
+                <button id="nothire" disabled style="background-color: gray; border: gray;"> Dont Hire </button>
+                
+            </div>
+            <div class="main">
+
+            </div>
+        </div>
+        <div class="blocks right">
+            <h1>Resume</h1>
+            
+            <div class="resume">
+
+            </div>
+            
+            <h2>Upload Job Description</h2>
+            <div class="job_description">
+                <label for="job_description">Primary Description</label>
+                <input type="file" id="job_description">
+                <label for="secondary_description">Secondary Descriptions</label>
+                <input type="file" id="secondary_description" multiple>
+            </div>
+        </div>
+
+        <div id="bgcheckpopup" style="display: none;">
+            Background Check Completed
+            <button id="done">Done</button>
+        </div>
+
+        <div id="alternateoffers" style="display: none;">
+            <div class="main">
+
+            </div>
+            <select name="AlternateJds" id="alternatejds">
+
+            </select>
+            <button id="send">Send</button>
+            <button id="notsend">Dont Send</button>
+            <button id="offersdone">Done</button>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.js" integrity="sha512-q/dWJ3kcmjBLU4Qc47E4A9kTB4m3wuTY7vkFJDTZKjTs8jhyGQnaUrxa0Ytd0ssMZhbNua9hE+E7Qv1j+DyZwA==" crossorigin="anonymous"></script>
+        <script type="text/javascript" charset="utf-8">
+            
+            var socket = io();
+            socket.on('connect', function() {
+                socket.emit('load', {data: '...HR is connected!...'});
+            });
+            socket.on('disconnect', function() {
+                socket.emit('load', {data: '...HR is disconnected!...'});
+            });
+            socket.on('hr_receive', function(message) {
+                client_message = message.data
+                document.querySelector('.main').innerHTML += `<span style="color:white">Client >>></span> <span style="color : red"> ${client_message} </span> <br>`
+            })
+
+            socket.on('hr_questions', function(message) {
+                client_message = message.data
+                document.querySelector('.main').innerHTML += `<span style="color:white">Question: </span> <span style="color : red"> ${client_message} </span> <br>`
+            })
+            // concatenates the entire audio transcript of the interviewee in this
+            // should be replaces with a database in production 
+            let audio_transcript = ""
+            socket.on('hr_receive_transcript', function(message) {
+                client_message = message.data
+                audio_transcript += message.data
+                audio_transcript += " "
+                document.querySelector('.main').innerHTML += `<span style="color:white">Client >>></span> <span style="color : red"> ${client_message} </span> <br>`
+            })
+            let matchperc = Number()
+            socket.on('resume_sent', function(data) {
+                matchperc = data.match_perc
+                const matchPercentage = parseFloat(data.match_perc);
+                let color;
+
+                if (matchPercentage < 40) {
+                    color = 'red';
+                } else if (matchPercentage >= 40 && matchPercentage <= 60) {
+                    color = 'yellow';
+                } else {
+                    color = 'green';
+                }
+
+                const matchText = `<span style="color:${color}; font-weight:bold;">Match Percentage:</span> ${data.match_perc} <br>`;
+                document.querySelector('.resume').innerHTML = matchText + data.text;
+            });
+
+            document.querySelector('#hrsend').addEventListener('click', function() {
+                const hr_message = document.querySelector('#hrinput')
+                document.querySelector('.main').innerHTML += `<span style="color:white">You >>></span>  <span style="color : blue"> ${hr_message.value} </span> <br>` 
+                socket.emit('hr_message', {data: hr_message.value})
+                hr_message.value = " "
+            })
+
+            let fileInput = document.querySelector('#job_description')
+            fileInput.addEventListener('change', () => {
+                console.log('jd uploaded')
+                const file = fileInput.files[0];
+                const reader = new FileReader();
+                reader.onload = function(event) {
+                    // When the file has been loaded, send its contents to the server
+                    const pdfData = event.target.result;
+                    socket.emit('jd_upload', { 'data': pdfData, 'jobtype': document.querySelector('#jobtype').value });
+                }
+                reader.readAsArrayBuffer(file);
+            })
+
+            let secondaryInput = document.querySelector('#secondary_description');
+            secondaryInput.addEventListener('change', () => {
+                console.log('secondary jd uploaded');
+                let files = secondaryInput.files;
+                console.log(files)
+                
+                files = Array.from(files)
+                console.log(typeof(files))
+                console.log(files)
+                
+                files.forEach(element => {
+                    const reader = new FileReader();
+                    reader.onload = function(event) {
+                        const pdfData = event.target.result;
+                        console.log('hhe')
+                        socket.emit('secondary_jd', { 'data': pdfData, 'jobtype': document.querySelector('#jobtype').value });
+                    };
+                    reader.readAsArrayBuffer(element);
+                });
+            });
+
+
+            let questions = document.querySelector('#questions')
+            questions.addEventListener('change', (event) => {
+                    const file = event.target.files[0];
+                    const reader = new FileReader();
+
+                reader.addEventListener('load', (event) => {
+                    const data = event.target.result;
+                    socket.emit('questions_upload', data);
+                });
+
+                reader.readAsArrayBuffer(file);
+            });
+
+            document.querySelector('#endinterview').addEventListener('click', () => {
+                // emit details of hr manager as well to add the compatibility to
+                // appropriate hr manager
+                socket.emit('interview_ended', { 'data': audio_transcript, 'job': document.querySelector('#jobs').value, 'matchperc': matchperc })
+            })
+            let SALARY = ""
+            document.querySelector('#hire').addEventListener('click', () => {
+                socket.emit('offersent', {'salary': SALARY})
+            })
+
+            document.querySelector('#nothire').addEventListener('click', () => {
+                socket.emit('nothired', {'data': 'none'})
+            })
+
+            socket.on('alternateoffers', (data) => {
+                //console.log("hehe")
+                let text = data.data
+                let popup = document.querySelector('#alternateoffers')
+                popup.removeAttribute('style')
+                selectmenu = popup.querySelector('#alternatejds')
+                for (i = 0; i<text.length; i++)
+                {
+                    para = document.createElement('h5')
+                    para.innerHTML = `Match Percentage: ${text[i].matchperc} <br>`
+                    para.innerHTML += text[i].text
+                    popup.querySelector('.main').appendChild(para)
+
+                    newoption = document.createElement('option')
+                    newoption.setAttribute('value', `${i}`)
+                    newoption.innerHTML = `Job ${i+1}`
+                    selectmenu.appendChild(newoption)
+                }
+                
+                console.log(text);
+                
+                (function (txt) {document.querySelector('#send').addEventListener('click', () => {
+                    value = selectmenu.value
+                    socket.emit('alternateoffer', {'text': txt[value].text, 'matchperc': txt[value].matchperc, 'yesOrno': 'yes'})
+                })})(text);
+
+                document.querySelector('#notsend').addEventListener('click', () => {
+                    console.log('not send pressed')
+                    document.querySelector('#alternateoffers').setAttribute('style', 'display:none')
+                    socket.emit('alternateoffer', {'text': '', 'matchperc': '', 'yesOrno': 'no'})
+                })
+                document.querySelector('#offersdone').addEventListener('click', () => {
+                    document.querySelector('#alternateoffers').setAttribute('style', 'display:none')
+                })
+            })
+
+            document.querySelector('#done').addEventListener('click', () => {
+                console.log('clicked')
+                document.querySelector('#bgcheckpopup').setAttribute('style', 'display:none')
+            })
+
+            socket.on('capability', (data) => {
+                document.querySelector('.main').innerHTML += `<span style="color:white">Interview has ended.<br> Client capability >>></span> <span style="color : ${data.color}"> ${data.capability} </span> <br>`
+            })
+
+            document.querySelector('#salary').addEventListener('click', () => {
+                socket.emit('get_salary', {'job': document.querySelector('#jobs').value, 'matchperc': matchperc})
+            })
+
+            socket.on('salary', (data) => {
+                console.log(data.data)
+                document.querySelector('span.salary>span').innerHTML = data.data;
+            })
+
+            socket.on('completed', (data) => {
+                document.querySelector('#bgcheckpopup').removeAttribute('style')
+                
+                textarr = [`Resume Match Percentage: ${data.matchperc}`, `Capability: ${data.capability}`,`Salary Offer: ${data.salary}`]
+                for (i = 0; i<3; i++)
+                {
+                    spani = document.createElement('span')
+                    spani.setAttribute('style', 'color:green; font-weight:bold;')
+                    spani.textContent = textarr[i]
+                    spani.appendChild(document.createElement('br'))
+                    document.querySelector('#bgcheckpopup').appendChild(spani)    
+                }
+                
+                document.querySelector('#hire').removeAttribute('disabled')
+                document.querySelector('#hire').setAttribute('class', 'active')
+                document.querySelector('#nothire').removeAttribute('disabled')
+                document.querySelector('#nothire').setAttribute('class', 'active')
+                SALARY = data.salary
+                //document.querySelector('#hire').click()
+            })
+
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,12 @@
+Flask
+Flask-Bootstrap
+Flask-SocketIO
+SpeechRecognition
+gTTS
+textblob
+PyPDF2==2.12.1
+pdfplumber
+scikit-learn
+scipy
+ffprobe
+pydub

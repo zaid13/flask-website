@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #0d0d0d, #0d0d0d);
+            color: #fff;
+        }
+  
+        .container {
+            width: 500px;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+  
+        h1 {
+            font-size: 36px;
+            margin-bottom: 40px;
+        }
+  
+        form {
+            display: inline-block;
+            text-align: left;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 2px 2px 10px #ccc;
+        }
+  
+        label {
+            font-size: 18px;
+            margin-bottom: 10px;
+            display: block;
+        }
+  
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: 1px 1px 5px #ccc;
+        }
+  
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            background-color: brown;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+  
+        input[type="submit"]:hover {
+            background-color: brown;
+        }
+    </style>
+  </head>
+  <body>
+    <h1 style="color: white; text-align: center;padding: 200px;">Please Register Yourself Below!!</h1>
+    <div class="container">
+      <form class="client-form" method="post">
+        <h1 style="color: brown;">Client Signup</h1>
+        <label style="color: #0d0d0d;">Username:</label>
+        <input type="text" name="username" required/>
+        <label style="color: #0d0d0d;">Password:</label>
+        <input type="password" name="password" required/>
+        <label style="color: #0d0d0d;">Confirm Password:</label>
+        <input type="password" name="confirm_password" required/>
+        <label style="color: #0d0d0d;">Full Name:</label>
+        <input type="text" name="full_name" required>
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

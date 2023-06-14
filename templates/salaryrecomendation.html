@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+label {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"], select {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4CAF50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+}
+  </style>
+</head>
+<body>
+  <form action="/salaryrecomendation" method="post">
+    <div class="form-group">
+      <label for="profession">Profession:</label>
+      <select name="profession" id="profession">
+        <option value="Doctor">Doctor</option>
+        <option value="Dentist">Dentist</option>
+        <option value="Pharmacist">Pharmacist</option>
+        <option value="Software developer">Software developer</option>
+        <option value="Registered nurse">Registered nurse</option>
+        <option value="Accountant">Accountant</option>
+        <option value="Teacher (K-12)">Teacher (K-12)</option>
+        <option value="Mechanical engineer">Mechanical engineer</option>
+        <option value="Marketing manager">Marketing manager</option>
+        <option value="Machine learning engineer">Machine learning engineer</option>
+        <option value="ML Engineer">ML Engineer</option>
+        <option value="Artificial intelligence engineer">Artificial intelligence engineer</option>
+        <option value="AI engineer">AI engineer</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="match_percent">Match Percentage:</label>
+      <input type="text" name="match_percent" id="match_percent">
+    </div>
+    <input type="submit" value="Calculate Salary">
+  </form>
+  {% if salary %}
+    <div class="result">
+      Salary: ${{ salary }}
+    </div>
+  {% endif %}
+</body>
+</html>

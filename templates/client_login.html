@@ -1,0 +1,79 @@
+<html>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+}
+
+.container {
+    width: 500px;
+    margin: 100px auto;
+    text-align: center;
+}
+
+h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+}
+
+form {
+    display: inline-block;
+    text-align: left;
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px #ccc;
+}
+
+label {
+    font-size: 18px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 1px 1px 5px #ccc;
+}
+
+input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: black;
+}
+
+    </style>
+
+    <head>
+        <title>Client Login</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+    </head>
+    <body>
+        <div class="container">
+            <h2>Client Login</h2>
+            <form action="/client_login" method="post">
+                <label>Username:</label>
+                <input type="text" name="username" required><br>
+                <label>Password:</label>
+                <input type="password" name="password" required><br>
+                <input type="submit" value="Login">
+            </form>
+            <p>Not a registered user? <a href="/client_signup">Sign up here</a></p>
+        </div>
+    </body>
+
+

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Job Description</title>
+  </head>
+  <body>
+    <div class="job_description"></div>
+    <button id="resume" disabled>Upload Resume</button>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.3.2/socket.io.js"></script>
+    <script>
+      const socket = io();
+      socket.emit('get_job_description');
+
+      socket.on('jd_sent', function(data) {
+        document.querySelector('#resume').removeAttribute('disabled');
+        const jobDescription = data.text;
+        const lines = jobDescription.split('\n');
+        const formattedLines = lines.map(line => {
+          const words = line.trim().split(/\s+/);
+          if (words.length < 5) {
+            return '<strong>' + line + '</strong>';
+          } else {
+            return line;
+          }
+        }).join('<br>');
+        document.querySelector('.job_description').innerHTML = formattedLines;
+      });
+    </script>
+  </body>
+</html>

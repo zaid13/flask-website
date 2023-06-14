@@ -1,0 +1,61 @@
+<html>
+  <style>
+   body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 40px;
+}
+
+h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+textarea {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: lightblue;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+p {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.high {
+  font-weight: bold;
+}
+
+.green {
+  color: green;
+}
+
+.yellow {
+  color: yellow;
+}
+
+.red {
+  color: red;
+}
+
+  </style>
+ 
+    <head>
+      <meta charset="utf-8">
+      <title>Sentiment Analysis Result</title>
+      <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    </head>
+    <body>
+      <h1>Sentiment Analysis Result</h1>
+      <p class="high {{ color }}">The compound score for the candidate interview is: {{ score * 100 }}%</p>
+      <a href="{{ url_for('index') }}">Back to form</a>
+    </body>  
+</html>

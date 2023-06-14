@@ -1,0 +1,73 @@
+<html>
+    <style>
+        body {
+          font-family: Arial, sans-serif;
+          background-color: #f2f2f2;
+        }
+      
+        h1 {
+          text-align: center;
+          margin-top: 50px;
+          font-size: 36px;
+          color: #333;
+        }
+      
+        form {
+          width: 50%;
+          margin: 0 auto;
+          padding: 50px;
+          background-color: #fff;
+          box-shadow: 0 0 10px #999;
+          border-radius: 10px;
+        }
+      
+        textarea, input[type="file"] {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          margin-bottom: 20px;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
+      
+        input[type="submit"] {
+          width: 100%;
+          padding: 10px;
+          font-size: 16px;
+          background-color: #333;
+          color: #fff;
+          border: 0;
+          border-radius: 5px;
+          cursor: pointer;
+        }
+      
+        input[type="submit"]:hover {
+          background-color: #444;
+        }
+      
+        p {
+          text-align: center;
+          font-size: 18px;
+          color: #333;
+          margin-top: 20px;
+        }
+      </style>
+      
+  <head>
+    <title>Resume Matching</title>
+  </head>
+  <body>
+    <h1>Resume Matching</h1>
+    <form action="/resumecomp" method="post" enctype="multipart/form-data">
+      <p>Job Description:</p>
+      <textarea name="job_description" rows="8"></textarea>
+      <p>Resume (PDF):</p>
+      <input type="file" name="resume">
+      <br><br>
+      <input type="submit" value="Submit">
+    </form>
+    {% if match_percentage %}
+      <p>Match Percentage: {{ match_percentage }}%</p>
+    {% endif %}
+  </body>
+</html>

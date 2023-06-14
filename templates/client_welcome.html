@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Welcome to Interview Dashboard</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			text-align: center;
+			background: url('https://images.unsplash.com/photo-1621425808218-59c30d38921c') no-repeat center center fixed;
+			background-size: cover;
+			background-color: black;
+			color: #FFFFFF;
+		}
+		
+		h1 {
+			margin-top: 150px;
+			font-size: 48px;
+			font-weight: bold;
+			text-shadow: 2px 2px 4px #000000;
+		}
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+		
+		button {
+			margin-top: 50px;
+			padding: 10px 20px;
+			background: linear-gradient(to right, #f7b733, #fc4a1a);
+			color: white;
+			font-size: 24px;
+			font-weight: bold;
+			border: none;
+			border-radius: 25px;
+			cursor: pointer;
+			box-shadow: 2px 2px 4px #000000;
+			transition: background-color 0.3s ease;
+            animation: pulse 2s infinite;
+		}
+		
+		button:hover {
+			background: linear-gradient(to right, #fc4a1a, #f7b733);
+		}
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+	</style>
+</head>
+<body>
+	<div class="content">
+        <h1>Welcome to Interview Dashboard</h1>
+		<!-- <button onclick="jobdescription()">View Job Description</button> -->
+        <button onclick="clientinfo()">Start Interview</button>
+    </div>
+	
+	<script>
+		function clientinfo() {
+			// Insert code here to start the interview
+			window.location.href = "client_info"; // This line redirects to clientchat.html
+		}
+		
+		
+	</script>
+</body>
+</html>
